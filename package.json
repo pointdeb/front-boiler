@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "front-boiler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,8 +7,16 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --inline",
     "build": "cross-env NODE_ENV=production webpack"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "webpack",
+    "sass",
+    "babel",
+    "eslint",
+    "pointdeb",
+    "frontend",
+    "boilerplate"
+  ],
+  "author": "Stephano Romain <stephano.romain@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.2",

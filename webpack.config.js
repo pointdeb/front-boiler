@@ -104,7 +104,7 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: '[name].css'
+      filename: '[name].css',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.html'),

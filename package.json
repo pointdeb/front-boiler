@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --no-info",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --inline",
     "build": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [],
@@ -12,10 +12,12 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "autoprefixer": "^9.4.5",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "css-mqpacker": "^7.0.0",
@@ -41,6 +43,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.2.5"
+    "@babel/polyfill": "^7.2.5",
+    "@babel/runtime": "^7.2.0"
   }
 }

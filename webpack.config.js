@@ -7,15 +7,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 const config = {
-  entry: ['./src/style.scss'],
+  entry: ['./src/index.html', './src/style.scss', './src/index.js'],
   output: {
     path: path.resolve('dist'),
     filename: '[name].js',
-    publicPath: dev ? `http://localhost:8080` : assetPath
+    // publicPath: dev ? `http://localhost:8080` : '/'
   },
   mode: dev ? 'development' : 'production',
   devtool: dev ? 'cheap-module-eval-source-map' : false,
   devServer: {
+    contentBase: path.join(__dirname, 'src'),
+    watchContentBase: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
@@ -33,6 +35,29 @@ const config = {
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      },
+      {
+        test: /\.js/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.html/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'html-loader', 
+          options: {
+            minimize: true
+          }
+        }
+      },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
@@ -75,7 +100,8 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.html'),
-      filename: 'index.html'
+      filename: 'index.html',
+      children: false, 
     })
   ]
 }
